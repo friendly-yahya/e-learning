@@ -21,8 +21,8 @@ export default function Home() {
           height={20}
           priority
         />
-        <div className="flex flex-row items-center">
-          <div className="flex flex-row items-center justify-between content-between" >
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center justify-between content-between strech gap-4" >
             <h1 className="text-5xl font-semibold" >Echo</h1>
             <NavigationMenu>
               <NavigationMenuList>
