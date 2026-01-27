@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { SearchIcon } from "lucide-react";
+import { BellDot } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -6,13 +8,22 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/navigation-menu";
+import { Button } from "@/components/ui/button";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full container flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+      <main className="flex min-h-screen w-full container flex-col items-center justify-between py-8 px-16 bg-white dark:bg-black sm:items-start">
         <Image
           className="dark:invert"
           src="/next.svg"
@@ -21,9 +32,9 @@ export default function Home() {
           height={20}
           priority
         />
-        <div className="flex flex-row items-center justify-between">
-          <div className="flex flex-row items-center justify-between content-between strech gap-4" >
-            <h1 className="text-5xl font-semibold" >Echo</h1>
+        <div className="flex flex-row items-center justify-between w-full">
+          <div className="flex flex-row items-center justify-between content-between strech gap-8" >
+            <h1 className="text-4xl font-semibold" >Echo</h1>
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
@@ -33,46 +44,38 @@ export default function Home() {
                   <Button variant="ghost" className="rounded-full">Analytics</Button>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  
-                  
                     <NavigationMenuTrigger className="rounded-full">Browse
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className="**left-auto right-0**">
-                      <NavigationMenuLink>Link</NavigationMenuLink>
-                      <NavigationMenuLink>Link</NavigationMenuLink>
-                      <NavigationMenuLink>Link</NavigationMenuLink>
-                      <NavigationMenuLink>Link</NavigationMenuLink>
-                    </NavigationMenuContent>
-                    
-
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          <div>
-
+          <div className="flex flex-row items-center gap-8">
+            <InputGroup className="rounded-full">
+              <InputGroupInput placeholder="Search..."/>
+              <InputGroupAddon align="inline-start">
+                <SearchIcon className="text-muted-foreground" />
+              </InputGroupAddon>
+            </InputGroup>
+            <div className="flex flex-row gap-2">
+              <Avatar size="lg">
+                <AvatarImage className="grayscale" src="https://github.com/shadcn.png" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <div className="flex justify-center items-center w-10 h-10  bg-zinc-100 rounded-full">
+                <BellDot/>
+              </div>
+              
+            </div>
           </div>
         </div>
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            yoooooooo it's the ball wizard
+          
+          <h1 className="max-w-xs text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+           Hey Amin
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-md text-xls leading-8 text-zinc-600 dark:text-zinc-400">
+            Ready to continue your physics journey? Let's pick up where you left off.
           </p>
         </div>
         <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
