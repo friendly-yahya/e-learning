@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SearchIcon } from "lucide-react";
 import { BellDot } from "lucide-react";
 import { Sparkles } from 'lucide-react';
+import { Progress } from "@/components/ui/progress"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -19,11 +20,23 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle,
+} from "@/components/ui/field"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex min-h-screen items-center justify-center bg-white font-sans dark:bg-black">
       <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 px-16 bg-white dark:bg-black sm:items-start">
        
         <div className="flex flex-row items-center justify-between w-full">
@@ -76,8 +89,25 @@ export default function Home() {
         </div>
         <div className="h-full w-full grid-rows-3">
           <div className="row-span-2 h-full w-full grid grid-cols-3">
-            <div className="flex col-span-2">
-
+            <div className="flex flex-col col-span-2">
+              <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
+                Last Course Watched
+              </h2>
+              <div className="mt-4 mb-4 relative w-full aspect-video overflow-hidden rounded-3xl bg-zinc-900">
+                                
+              </div>
+              <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">
+                Motion & Forces 
+              </h3>
+              <Field>
+                <FieldDescription>
+                  Video 2 of 8 • Understanding Acceleration
+                </FieldDescription>
+                <Progress value={25}/>
+                <FieldDescription>
+                  25% complete
+                </FieldDescription>
+              </Field>
             </div>
             <div className="grid grid-rows-6 col-span-1">
               <div className="flex row-span-2">
