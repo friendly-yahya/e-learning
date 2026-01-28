@@ -24,7 +24,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full container flex-col items-center gap-32 py-8 px-16 bg-white dark:bg-black sm:items-start">
+      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 px-16 bg-white dark:bg-black sm:items-start">
        
         <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-row items-center justify-between content-between strech gap-8" >
@@ -74,7 +74,25 @@ export default function Home() {
               Ready to continue your physics journey? Let's pick up where you left off.
           </p>
         </div>
+        <div className="h-full w-full grid-rows-3">
+          <div className="row-span-2 h-full w-full grid grid-cols-3">
+            <div className="flex col-span-2">
 
+            </div>
+            <div className="grid grid-rows-6 col-span-1">
+              <div className="flex row-span-2">
+
+              </div>
+              <div className="flex row-span-1">
+
+              </div>
+              <div className="flex row-span-3">
+
+              </div>
+            </div>
+          </div>
+          <div className="row-span-1"></div>
+        </div>
       </main>
     </div>
   );
