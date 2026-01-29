@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { SearchIcon } from "lucide-react";
 import { BellDot } from "lucide-react";
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Zap, Timer, Flame, Check } from 'lucide-react';
 import { Progress } from "@/components/ui/progress"
 import {
   NavigationMenu,
@@ -36,8 +36,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-white font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 px-16 bg-white dark:bg-black sm:items-start">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 px-16 bg-zinc-50 dark:bg-black sm:items-start">
        
         <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-row items-center justify-between content-between strech gap-8" >
@@ -88,13 +88,12 @@ export default function Home() {
           </p>
         </div>
         <div className="h-full w-full grid-rows-3">
-          <div className="row-span-2 h-full w-full grid grid-cols-3">
-            <div className="flex flex-col col-span-2">
+          <div className="row-span-2 h-full w-full grid grid-cols-3 gap-8 ">
+            <div className="flex flex-col py-8 px-10 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
               <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
                 Last Course Watched
               </h2>
               <div className="mt-4 mb-4 relative w-full aspect-video overflow-hidden rounded-3xl bg-zinc-900">
-                                
               </div>
               <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">
                 Motion & Forces 
@@ -107,17 +106,95 @@ export default function Home() {
                 <FieldDescription>
                   25% complete
                 </FieldDescription>
+                <Button className="w-full">Continue Learning</Button>
+
               </Field>
             </div>
-            <div className="grid grid-rows-6 col-span-1">
-              <div className="flex row-span-2">
-
+            <div className="grid grid-rows-6 gap-8">
+              <div className="flex flex-col justify-between items-start py-8 px-10 row-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
+                <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
+                  Next Topic Preview
+                </h2>
+                <div className="px-4">
+                  <div className="flex-row gap-2 flex items-center">
+                    <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black ">
+                      Energy & Work
+                    </h3>
+                    <Zap className="fill-black stroke-black"/>
+                  </div>
+                  <FieldDescription>
+                    “Discover how energy powers everything!”
+                  </FieldDescription>
+                </div>
+                <Button className="w-full">Explore Topic</Button>
               </div>
-              <div className="flex row-span-1">
-
+              <div className="flex flex-col row-span-1 border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
+                <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">Your Learning Time</h2>
+                <div className="flex-row items-center gap-2 flex ">
+                    <Timer className="stroke-black size-10"/>
+                    <h1 className="max-w-xs text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+                      2.5 Hours
+                    </h1>
+                    
+                </div>
               </div>
-              <div className="flex row-span-3">
-
+              <div className="flex row-span-3 flex-col border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
+                <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">Your Streak</h2>
+                <div>
+                  <div className="flex-row items-center gap-2 flex ">
+                    <Flame className="fill-black stroke-black size-10"/>
+                    <h1 className="max-w-xs text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+                      33 Days
+                    </h1>
+                  </div>
+                  <p className="my-4 mx-2">
+                    Every day, Every hour counts. Come back soon!
+                  </p>
+                  <div className="flex flex-row gap-4">
+                    <div className="flex flex-col items-center gap-1">
+                      <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">M</h3>
+                      <div className="flex justify-center items-center w-8 h-8  bg-black rounded-full">
+                        <Check className="stroke-zinc-100 size-4"/>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">T</h3>
+                      <div className="flex justify-center items-center w-8 h-8  bg-black rounded-full">
+                        <Check className="stroke-zinc-100 size-4"/>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">W</h3>
+                      <div className="flex justify-center items-center w-8 h-8  bg-black rounded-full">
+                        <Check className="stroke-zinc-100 size-4"/>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">T</h3>
+                      <div className="flex justify-center items-center w-8 h-8  bg-zinc-800 rounded-full">
+                        <Check className="stroke-zinc-100 size-4"/>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">F</h3>
+                      <div className="flex justify-center items-center w-8 h-8  bg-zinc-700 rounded-full">
+                        <Check className="stroke-zinc-100 size-4"/>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">S</h3>
+                      <div className="flex justify-center items-center w-8 h-8  bg-zinc-600 rounded-full">
+                        <Check className="stroke-zinc-100 size-4"/>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">S</h3>
+                      <div className="flex justify-center items-center w-8 h-8  bg-zinc-500 rounded-full">
+                        <Check className="stroke-zinc-100 size-4"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
