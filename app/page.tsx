@@ -1,8 +1,15 @@
 import Image from "next/image";
 import { SearchIcon } from "lucide-react";
 import { BellDot } from "lucide-react";
-import { Sparkles, Zap, Timer, Flame, Check } from 'lucide-react';
-import { Progress } from "@/components/ui/progress"
+import { Sparkles, Zap, Timer, Flame, Check, LibraryBig } from 'lucide-react';
+import { Progress } from "@/components/ui/progress";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -198,7 +205,14 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="row-span-1"></div>
+          <div className="row-span-1">
+            <div className="flex flex-row gap-4 items-center ">
+            <h1 className="max-w-xs text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
+             Browse Topics 
+            </h1>
+            <LibraryBig className="stroke-violet-400 size-8 "/>
+          </div>
+          </div>
         </div>
       </main>
     </div>
