@@ -44,10 +44,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 px-16 bg-zinc-50 dark:bg-black sm:items-start">
+      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 container bg-zinc-50 dark:bg-black sm:items-start">
        
         <div className="flex flex-row items-center justify-between w-full">
-          <div className="flex flex-row items-center justify-between content-between strech gap-8" >
+          <div className="flex flex-row items-center justify-between content-between strech gap-6" >
             <h1 className="text-4xl font-semibold" >Echo</h1>
             <NavigationMenu>
               <NavigationMenuList>
@@ -64,7 +64,7 @@ export default function Home() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          <div className="flex flex-row items-center gap-8">
+          <div className="flex flex-row items-center gap-6">
             <InputGroup className="rounded-full">
               <InputGroupInput placeholder="Search..."/>
               <InputGroupAddon align="inline-start">
@@ -95,7 +95,7 @@ export default function Home() {
           </p>
         </div>
         <div className="h-full w-full grid-rows-3">
-          <div className="row-span-2 h-full w-full grid grid-cols-3 gap-8 ">
+          <div className="row-span-2 h-full w-full grid grid-cols-3 gap-6 ">
             <div className="flex flex-col py-8 px-10 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
               <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
                 Last Course Watched
@@ -117,7 +117,7 @@ export default function Home() {
 
               </Field>
             </div>
-            <div className="grid grid-rows-6 gap-8">
+            <div className="grid grid-rows-6 gap-6">
               <div className="flex flex-col justify-between items-start py-8 px-10 row-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
                 <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
                   Next Topic Preview
@@ -207,10 +207,16 @@ export default function Home() {
           </div>
           <div className="row-span-1">
             <div className="flex flex-row gap-4 items-center ">
+
             <h1 className="max-w-xs text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
              Browse Topics 
             </h1>
             <LibraryBig className="stroke-violet-400 size-8 "/>
+          </div>
+          <div className="flex flex-col py-8 px-10 min-w-[350px] max-h-[400px] border-zinc-200 rounded-3xl bg-zinc-100 border-1">
+            <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
+                Next Topic Preview
+            </h2>
           </div>
           </div>
         </div>
