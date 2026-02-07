@@ -44,7 +44,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 container bg-zinc-50 dark:bg-black sm:items-start">
+      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 container bg-zinc-300 dark:bg-black sm:items-start">
        
         <div className="flex flex-row items-center justify-between w-full">
           <div className="flex flex-row items-center justify-between content-between strech gap-6" >
@@ -94,9 +94,9 @@ export default function Home() {
               Ready to continue your physics journey? Let's pick up where you left off.
           </p>
         </div>
-        <div className="h-full w-full grid-rows-3">
-          <div className="row-span-2 h-full w-full grid grid-cols-3 gap-6 ">
-            <div className="flex flex-col py-8 px-10 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
+        <div className="h-full w-full grid grid-rows-3">
+          <div className="row-span-2 flex h-full w-full gap-6 ">
+            <div className=" py-8 flex flex-col flex-[2] px-10 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
               <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
                 Last Course Watched
               </h2>
@@ -117,7 +117,7 @@ export default function Home() {
 
               </Field>
             </div>
-            <div className="grid grid-rows-6 gap-6">
+            <div className="flex flex-1 flex-col gap-6">
               <div className="flex flex-col justify-between items-start py-8 px-10 row-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
                 <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
                   Next Topic Preview
