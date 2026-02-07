@@ -118,7 +118,7 @@ export default function Home() {
               </Field>
             </div>
             <div className="flex flex-1 flex-col gap-6">
-              <div className="flex flex-col justify-between items-start py-8 px-10 row-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
+              <div className="flex flex-2 flex-col justify-between items-start py-8 px-10 row-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
                 <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
                   Next Topic Preview
                 </h2>
@@ -135,7 +135,7 @@ export default function Home() {
                 </div>
                 <Button className="w-full">Explore Topic</Button>
               </div>
-              <div className="flex flex-col row-span-1 border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
+              <div className="flex flex-col flex-1 border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
                 <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">Your Learning Time</h2>
                 <div className="flex-row items-center gap-2 flex ">
                     <Timer className="stroke-black size-10"/>
@@ -145,7 +145,7 @@ export default function Home() {
                     
                 </div>
               </div>
-              <div className="flex row-span-3 flex-col border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
+              <div className="flex flex-3 flex-col border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
                 <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">Your Streak</h2>
                 <div>
                   <div className="flex-row items-center gap-2 flex ">
