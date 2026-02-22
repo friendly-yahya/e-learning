@@ -1,11 +1,11 @@
 import StreakCard from "@/components/ui/streak-card";
 import LearningTime from "@/components/ui/learning-time";
 import NextTopic from "@/components/next-topic";
+import LastWatched from "@/components/last-watched";
 import Image from "next/image";
 import { SearchIcon } from "lucide-react";
 import { BellDot } from "lucide-react";
 import { Sparkles, LibraryBig } from 'lucide-react';
-import { Progress } from "@/components/ui/progress";
 import {
   Carousel,
   CarouselContent,
@@ -30,10 +30,7 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
-import {
-  Field,
-  FieldDescription,
-} from "@/components/ui/field"
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function Home() {
@@ -91,27 +88,7 @@ export default function Home() {
         </div>
         <div className="h-full w-full grid grid-rows-3">
           <div className="row-span-2 flex h-full w-full gap-6 ">
-            <div className=" py-8 flex flex-col flex-[2] px-10 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
-              <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
-                Last Course Watched
-              </h2>
-              <div className="mt-4 mb-4 relative w-full aspect-video overflow-hidden rounded-3xl bg-zinc-900">
-              </div>
-              <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black">
-                Motion & Forces 
-              </h3>
-              <Field>
-                <FieldDescription>
-                  Video 2 of 8 • Understanding Acceleration
-                </FieldDescription>
-                <Progress value={25}/>
-                <FieldDescription>
-                  25% complete
-                </FieldDescription>
-                <Button className="w-full">Continue Learning</Button>
-
-              </Field>
-            </div>
+            <LastWatched></LastWatched>
             <div className="flex flex-1 flex-col gap-6">
               <NextTopic></NextTopic>
               <LearningTime></LearningTime>
