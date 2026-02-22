@@ -1,8 +1,10 @@
 import StreakCard from "@/components/ui/streak-card";
+import LearningTime from "@/components/ui/learning-time";
+import NextTopic from "@/components/next-topic";
 import Image from "next/image";
 import { SearchIcon } from "lucide-react";
 import { BellDot } from "lucide-react";
-import { Sparkles, Zap, Timer, LibraryBig } from 'lucide-react';
+import { Sparkles, LibraryBig } from 'lucide-react';
 import { Progress } from "@/components/ui/progress";
 import {
   Carousel,
@@ -30,15 +32,7 @@ import {
 } from "@/components/ui/input-group";
 import {
   Field,
-  FieldContent,
   FieldDescription,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSeparator,
-  FieldSet,
-  FieldTitle,
 } from "@/components/ui/field"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -119,33 +113,8 @@ export default function Home() {
               </Field>
             </div>
             <div className="flex flex-1 flex-col gap-6">
-              <div className="flex flex-2 flex-col justify-between items-start py-8 px-10 row-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
-                <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
-                  Next Topic Preview
-                </h2>
-                <div className="px-4">
-                  <div className="flex-row gap-2 flex items-center">
-                    <h3 className="max-w-xs text-xl font-semibold leading-10 tracking-tight text-black ">
-                      Energy & Work
-                    </h3>
-                    <Zap className="fill-black stroke-black"/>
-                  </div>
-                  <FieldDescription>
-                    “Discover how energy powers everything!”
-                  </FieldDescription>
-                </div>
-                <Button className="w-full">Explore Topic</Button>
-              </div>
-              <div className="flex flex-col flex-1 border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
-                <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">Your Learning Time</h2>
-                <div className="flex-row items-center gap-2 flex ">
-                    <Timer className="stroke-black size-10"/>
-                    <h1 className="max-w-xs text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-                      2.5 Hours
-                    </h1>
-                    
-                </div>
-              </div>
+              <NextTopic></NextTopic>
+              <LearningTime></LearningTime>
               <StreakCard></StreakCard>
             </div>
           </div>
