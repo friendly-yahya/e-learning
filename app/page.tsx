@@ -2,9 +2,9 @@ import StreakCard from "@/components/ui/streak-card";
 import LearningTime from "@/components/ui/learning-time";
 import NextTopic from "@/components/next-topic";
 import LastWatched from "@/components/last-watched";
+import {Card,} from "@/components/ui/card"
+import Header from "@/components/header";
 import Image from "next/image";
-import { SearchIcon } from "lucide-react";
-import { BellDot } from "lucide-react";
 import { Sparkles, LibraryBig } from 'lucide-react';
 import {
   Carousel,
@@ -13,68 +13,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
-} from "@/components/ui/input-group";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 container bg-zinc-300 dark:bg-black sm:items-start">
        
-        <div className="flex flex-row items-center justify-between w-full">
-          <div className="flex flex-row items-center justify-between content-between strech gap-6" >
-            <h1 className="text-4xl font-semibold" >Echo</h1>
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                   <Button variant="ghost" className="rounded-full">Home</Button>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Button variant="ghost" className="rounded-full">Analytics</Button>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                    <NavigationMenuTrigger className="rounded-full">Browse
-                    </NavigationMenuTrigger>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
-          </div>
-          <div className="flex flex-row items-center gap-6">
-            <InputGroup className="rounded-full">
-              <InputGroupInput placeholder="Search..."/>
-              <InputGroupAddon align="inline-start">
-                <SearchIcon className="text-muted-foreground" />
-              </InputGroupAddon>
-            </InputGroup>
-            <div className="flex flex-row gap-2">
-              <Avatar size="lg">
-                <AvatarImage className="grayscale" src="https://github.com/shadcn.png" />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-              <div className="flex justify-center items-center w-10 h-10  bg-zinc-100 rounded-full">
-                <BellDot/>
-              </div>
-              
-            </div>
-          </div>
-        </div>
+        <Header/>
         <div className="flex flex-col items-center gap-4 text-center sm:items-start sm:text-left w-full">
           <div className="flex flex-row gap-4 items-center ">
             <h1 className="max-w-xs text-4xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
@@ -104,9 +51,12 @@ export default function Home() {
             <LibraryBig className="stroke-violet-400 size-8 "/>
           </div>
           <div className="flex flex-col py-8 px-10 min-w-[350px] max-h-[400px] border-zinc-200 rounded-3xl bg-zinc-100 border-1">
+
+            <Card>
             <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
-                Next Topic Preview
+                Quantum Physics
             </h2>
+            </Card>
           </div>
           </div>
         </div>
