@@ -92,7 +92,7 @@ export default function Home() {
             <div className="flex flex-1 flex-col gap-6">
               <NextTopic></NextTopic>
               <LearningTime></LearningTime>
-              <StreakCard></StreakCard>
+              <StreakCard />
             </div>
           </div>
           <div className="row-span-1">
