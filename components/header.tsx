@@ -1,23 +1,13 @@
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+
 import { HeaderNavigationMenu } from "@/components/header_nav_menu";
 import { SearchIcon, BellDot } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
   InputGroup,
   InputGroupAddon,
-  InputGroupButton,
   InputGroupInput,
-  InputGroupText,
-  InputGroupTextarea,
 } from "@/components/ui/input-group";
+import { ModeToggle } from "@/components/ui/toggle";
 export default function () {
     return(
         <div className="flex flex-row items-center justify-between w-full">
@@ -40,7 +30,7 @@ export default function () {
               <div className="flex justify-center items-center w-10 h-10  bg-zinc-100 rounded-full">
                 <BellDot/>
               </div>
-              
+              <ModeToggle/>
             </div>
           </div>
         </div>

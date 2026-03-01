@@ -18,17 +18,17 @@ import {
         <NavigationMenu viewport={false}>
             <NavigationMenuList>
                 <NavigationMenuItem>
-                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} bg-transparent !rounded-full`}>
                         <Link href="#">Home</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink asChild className={`${navigationMenuTriggerStyle()} bg-transparent !rounded-full`}>
                         <Link href="#">Analytics</Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <NavigationMenuTrigger>Browse</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="!rounded-full bg-transparent">Browse</NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="grid gap-1 w-[180px]">
                             <ListItem href="#" title="1 bac PC"></ListItem>
