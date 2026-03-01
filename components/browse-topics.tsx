@@ -99,7 +99,7 @@ function TopicCard({ topic }: { topic: Topic }) {
   const isInProgress = topic.status === "In Progress";
 
   return (
-    <Card className="rounded-2xl border border-zinc-200 shadow-sm h-full">
+    <Card className="rounded-2xl border border-zinc-200 dark:bg-neutral-500-5 shadow-sm h-full">
       <CardContent className="p-4 flex flex-col gap-3 h-full">
         <h2 className="text-base font-semibold leading-snug text-zinc-900">
           {topic.title}

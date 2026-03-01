@@ -4,6 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-neutral-500-5: rgba(115, 115, 115, 0.05);
+  --color-neutral-500-30: rgba(115, 115, 115, 0.3);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);

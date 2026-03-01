@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
 export default function () {
-    return( <div className=" py-8 flex flex-col flex-[2] px-10 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 border-1">
+    return( <div className=" py-8 flex flex-col flex-[2] px-10 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 dark:border-neutral-500-30 dark:bg-neutral-500-5 border-1">
               <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black">
                 Last Course Watched
               </h2>

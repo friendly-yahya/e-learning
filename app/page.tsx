@@ -7,8 +7,8 @@ import BrowseTopics from "@/components/browse-topics";
 import { Sparkles } from "lucide-react";
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 bg-zinc-50 dark:bg-black sm:items-start">
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-neutral-950">
+      <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 bg-zinc-50 dark:bg-neutral-950 sm:items-start">
         <Header />
 
         {/* Greeting */}

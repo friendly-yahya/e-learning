@@ -49,7 +49,7 @@ export default function StreakCard({
   message = "Every day, every hour counts. Come back soon!",
 }: StreakCardProps) {
   return (
-    <div className="flex flex-3 flex-col border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10">
+    <div className="flex flex-3 flex-col border-zinc-200 rounded-3xl bg-zinc-100 border-1 justify-between items-start py-8 px-10 dark:bg-neutral-500-5 dark:border-neutral-500-30">
       <h2 className="text-2xl font-semibold leading-10 tracking-tight text-black">
         Your Streak
       </h2>
