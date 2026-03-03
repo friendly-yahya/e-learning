@@ -31,7 +31,7 @@ const TOPICS: Topic[] = [
     id: "quantum-physics",
     title: "Quantum Physics",
     description: "Delve into the principles of quantum mechanics and wave-particle duality",
-    status: "In Progress",
+    status: "Completed",
     videoCount: 50,
     chapterCount: 6,
     hours: 15,
@@ -99,15 +99,15 @@ function TopicCard({ topic }: { topic: Topic }) {
   const isInProgress = topic.status === "In Progress";
 
   return (
-    <Card className="rounded-2xl border border-zinc-200 dark:bg-neutral-500-5 shadow-sm h-full">
+    <Card className="rounded-2xl border border-zinc-200 dark:bg-neutral-500-5 dark:border-neutral-500-30 shadow-sm h-full">
       <CardContent className="p-4 flex flex-col gap-3 h-full">
-        <h2 className="text-base font-semibold leading-snug text-zinc-900">
+        <h2 className="text-xl font-semibold leading-snug text-zinc-900 dark:text-neutral-50">
           {topic.title}
         </h2>
 
         <div className="relative w-full h-24 overflow-hidden rounded-xl bg-zinc-800" />
 
-        <p className="text-xs leading-5 text-zinc-500 flex-1">{topic.description}</p>
+        <p className="text-sm leading-5 text-zinc-500 flex-1">{topic.description}</p>
 
         <StatusBadge status={topic.status} />
 
@@ -159,7 +159,7 @@ export default function BrowseTopics() {
           <CarouselNext className="hidden sm:flex absolute -top-12 right-0 border-zinc-200" />
         </Carousel>
         {/* Right fog effect */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-zinc-50 dark:from-black to-transparent rounded-r-2xl" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-zinc-50 dark:from-neutral-950 to-transparent " />
       </div>
     </section>
   );
