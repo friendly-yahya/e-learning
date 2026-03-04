@@ -2,15 +2,12 @@ import StreakCard from "@/components/ui/streak-card";
 import LearningTime from "@/components/ui/learning-time";
 import NextTopic from "@/components/next-topic";
 import LastWatched from "@/components/last-watched";
-import Header from "@/components/header";
 import BrowseTopics from "@/components/browse-topics";
 import { Sparkles } from "lucide-react";
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-neutral-950">
       <main className="flex min-h-screen w-full container flex-col items-center gap-16 py-8 bg-zinc-50 dark:bg-neutral-950 sm:items-start">
-        <Header />
-
         {/* Greeting */}
         <div className="flex flex-col items-center gap-4 text-center sm:items-start sm:text-left w-full">
           <div className="flex flex-row gap-4 items-center">
