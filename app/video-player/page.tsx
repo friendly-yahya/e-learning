@@ -1,14 +1,15 @@
 import { Badge } from "@/components/ui/badge";
 import { LessonItem } from "@/components/lesson-item";
-
+import { Chapter } from "@/components/chapter";
+import { ChapterGroup } from "@/components/chapter-group";
 export default function Page() {
   const currentStatus = 'playing';
   return (
     <div className="flex flex-row items-center gap-4 text-center sm:items-start sm:text-left w-full">
-      <div className="flex-[3] flex flex-col gap-6 min-w-0">
+      <div className="flex-3 flex flex-col gap-6 min-w-0">
         <div className="mt-4 mb-4 relative w-full aspect-video overflow-hidden rounded-3xl bg-zinc-900">
         </div>
-        <div className=" py-5 flex flex-col px-5 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 dark:border-neutral-500-30 dark:bg-neutral-500-5 border-1 gap-6">
+        <div className=" py-5 flex flex-col px-5 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 dark:border-neutral-500-30 dark:bg-neutral-500-5 border gap-6">
           <div className="flex flex-rows justify-between">
             <h2 className="max-w-xs text-2xl font-semibold leading-10 tracking-tight text-black dark:text-neutral-50">
               Fundamentals
@@ -53,7 +54,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <div className="py-5 flex flex-col px-5 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 dark:border-neutral-500-30 dark:bg-neutral-500-5 border-1 gap-6">
+        <div className="py-5 flex flex-col px-5 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 dark:border-neutral-500-30 dark:bg-neutral-500-5 border gap-6">
           <div className="flex flex-rows justify-between">
             <h3>
               Join the discussion
@@ -67,7 +68,10 @@ export default function Page() {
 
         </div>
       </div>
-      <div className="flex-[1]">
+      
+      <div className="flex-1">
+        <ChapterGroup/>
+        <Chapter/>
         <LessonItem status="completed"/>
         <LessonItem status="playing"/>
         <LessonItem status="new"/>
