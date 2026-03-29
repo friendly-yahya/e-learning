@@ -1,7 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { Dot } from "lucide-react";
+import { useRef, useState } from "react";
+import { Dot, ChevronDown } from "lucide-react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 import { ChapterGroup } from "@/components/chapter-group";
 import { Chapter } from "@/components/chapter";
 import { LessonItem } from "@/components/lesson-item";
@@ -68,8 +72,48 @@ export function CourseModule({
   totalMinutes,
   groups,
 }: CourseModuleProps) {
+  const [isOpen, setIsOpen] = useState(true);
   const [expandedGroups, setExpandedGroups] = useState<Set<string>>(new Set());
   const [expandedChapters, setExpandedChapters] = useState<Set<string>>(new Set());
+
+  const contentRef = useRef<HTMLDivElement>(null);
+  const chevronRef = useRef<SVGSVGElement>(null);
+
+  // Animate on isOpen change
+  useGSAP(() => {
+    const el = contentRef.current;
+    if (!el) return;
+
+    if (isOpen) {
+      // Expand: animate from current height to auto
+      gsap.fromTo(
+        el,
+        { height: 0, opacity: 0 },
+        {
+          height: "auto",
+          opacity: 1,
+          duration: 0.4,
+          ease: "power3.out",
+          clearProps: "height", // let it be auto after animation so scroll still works
+        }
+      );
+    } else {
+      // Collapse: animate from current height to 0
+      gsap.to(el, {
+        height: 0,
+        opacity: 0,
+        duration: 0.35,
+        ease: "power3.inOut",
+      });
+    }
+
+    // Chevron rotation
+    gsap.to(chevronRef.current, {
+      rotation: isOpen ? 0 : -90,
+      duration: 0.3,
+      ease: "power2.inOut",
+    });
+  }, [isOpen]);
 
   const toggleGroup = (id: string) =>
     setExpandedGroups((prev) => {
@@ -90,8 +134,14 @@ export function CourseModule({
   return (
     <div className="flex flex-col bg-neutral-950 rounded-2xl overflow-hidden w-full max-w-sm border border-neutral-800/60">
       {/* Header */}
-      <div className="px-5 pt-5 pb-4 border-b border-neutral-800/60">
-        <h2 className="text-lg font-semibold text-neutral-100 mb-1">{title}</h2>
+      <div
+        className="px-5 pt-5 pb-4 border-b border-neutral-800/60 cursor-pointer select-none"
+        onClick={() => setIsOpen((v) => !v)}
+      >
+        <div className="flex flex-row items-center justify-between mb-1">
+          <h2 className="text-lg font-semibold text-neutral-100">{title}</h2>
+          <ChevronDown ref={chevronRef} className="size-4 text-neutral-400" />
+        </div>
         <div className="flex flex-row items-center gap-1 text-sm text-neutral-400 mb-3">
           <span>{completedSections}/{totalSections} completed</span>
           <Dot className="size-4" />
@@ -100,35 +150,37 @@ export function CourseModule({
         <ProgressBar percent={overallPercent} />
       </div>
 
-      {/* Groups */}
-      <div className="flex flex-col p-2 overflow-y-auto max-h-[600px]">
-        {groups.map((group) => (
-          <div key={group.id}>
-            <div onClick={() => toggleGroup(group.id)}>
-              <ChapterGroup />
-            </div>
-
-            {expandedGroups.has(group.id) && (
-              <div className="ml-4 pl-3">
-                {group.chapters.map((chapter) => (
-                  <div key={chapter.id}>
-                    <div onClick={() => toggleChapter(chapter.id)}>
-                      <Chapter />
-                    </div>
-
-                    {expandedChapters.has(chapter.id) && (
-                      <div className="ml-4 pl-3">
-                        {chapter.lessons.map((lesson) => (
-                          <LessonItem key={lesson.id} status={lesson.status} />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+      {/* Groups — GSAP animated */}
+      <div ref={contentRef} className="overflow-hidden">
+        <div className="flex flex-col p-2 max-h-[600px] overflow-y-auto">
+          {groups.map((group) => (
+            <div key={group.id}>
+              <div onClick={() => toggleGroup(group.id)}>
+                <ChapterGroup />
               </div>
-            )}
-          </div>
-        ))}
+
+              {expandedGroups.has(group.id) && (
+                <div className="ml-4 pl-3">
+                  {group.chapters.map((chapter) => (
+                    <div key={chapter.id}>
+                      <div onClick={() => toggleChapter(chapter.id)}>
+                        <Chapter />
+                      </div>
+
+                      {expandedChapters.has(chapter.id) && (
+                        <div className="ml-4 pl-3">
+                          {chapter.lessons.map((lesson) => (
+                            <LessonItem key={lesson.id} status={lesson.status} />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
