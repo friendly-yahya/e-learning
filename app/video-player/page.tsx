@@ -2,12 +2,13 @@ import { Badge } from "@/components/ui/badge";
 import { LessonItem } from "@/components/lesson-item";
 import { Chapter } from "@/components/chapter";
 import { ChapterGroup } from "@/components/chapter-group";
+import { CourseModule } from "@/components/course-module";
 export default function Page() {
   const currentStatus = 'playing';
   return (
     <div className="flex flex-row items-center gap-4 text-center sm:items-start sm:text-left w-full">
       <div className="flex-3 flex flex-col gap-6 min-w-0">
-        <div className="mt-4 mb-4 relative w-full aspect-video overflow-hidden rounded-3xl bg-zinc-900">
+        <div className="relative w-full aspect-video overflow-hidden rounded-3xl bg-zinc-900">
         </div>
         <div className=" py-5 flex flex-col px-5 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 dark:border-neutral-500-30 dark:bg-neutral-500-5 border gap-6">
           <div className="flex flex-rows justify-between">
@@ -70,11 +71,51 @@ export default function Page() {
       </div>
       
       <div className="flex-1">
-        <ChapterGroup/>
-        <Chapter/>
-        <LessonItem status="completed"/>
-        <LessonItem status="playing"/>
-        <LessonItem status="new"/>
+        <CourseModule
+          title="Mechanics"
+          completedSections={2}
+          totalSections={10}
+          totalMinutes={133}
+          groups={[
+            {
+              id: "g1",
+              title: "Fluid Statics part 1",
+              videosWatched: 2,
+              totalVideos: 10,
+              percentComplete: 40,
+              chapters: [
+                {
+                  id: "c1",
+                  title: "Fluids",
+                  videosWatched: 2,
+                  totalVideos: 3,
+                  percentComplete: 60,
+                  lessons: [
+                    { id: "l1", title: "Fundamentals", duration: "40m", status: "completed" },
+                    { id: "l2", title: "Fundamentals", duration: "40m", status: "playing" },
+                    { id: "l3", title: "Fundamentals", duration: "40m", status: "new" },
+                  ],
+                },
+              ],
+            },
+            {
+              id: "g2",
+              title: "Fluid Statics part 2",
+              videosWatched: 2,
+              totalVideos: 15,
+              percentComplete: 10,
+              chapters: [],
+            },
+            {
+              id: "g3",
+              title: "Quantum Mechanics",
+              videosWatched: 0,
+              totalVideos: 20,
+              percentComplete: 0,
+              chapters: [],
+            },
+          ]}
+        />
       </div>
     </div>
   );
