@@ -152,7 +152,7 @@ export function CourseModule({
 
       {/* Groups — GSAP animated */}
       <div ref={contentRef} className="overflow-hidden">
-        <div className="flex flex-col p-2 max-h-[600px] overflow-y-auto">
+        <div className="flex flex-col p-2 max-h-150 overflow-y-auto">
           {groups.map((group) => (
             <div key={group.id}>
               <div onClick={() => toggleGroup(group.id)}>
