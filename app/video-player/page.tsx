@@ -1,8 +1,9 @@
 "use client";
-
+import { FileAttachment, FileAttachmentGroup } from "@/components/file-attachment";
 import { Badge } from "@/components/ui/badge";
 import { CommentInput } from "@/components/comment-input";
 import { CourseModule } from "@/components/course-module";
+import { FileText } from "lucide-react";
 
 export default function Page() {
   const currentStatus = 'playing';
@@ -39,22 +40,34 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <div>
-            <h3>Course Materials</h3>
-            <div>
-              <div>
-                <div></div>
-                <div></div>
-              </div>
-              <div>
-                <div></div>
-                <div></div>
-              </div>
-              <div>
-                <div></div>
-                <div></div>
-              </div>
-            </div>
+          <div className="flex-col flex gap-6">
+            <h3 className="text-lg font-semibold text-black dark:text-neutral-50 flex items-center gap-2">
+              <FileText size="1em" strokeWidth={1.8} className="text-black dark:text-neutral-50" />
+              Course Materials
+            </h3>
+            <FileAttachmentGroup>
+              <FileAttachment
+                label="Newton's Laws Cheat Sheet"
+                detail="2.4 MB"
+                iconType="pdf"
+                iconColor="red"
+                onDownload={() => console.log("download pdf")}
+              />
+              <FileAttachment
+                label="Force Calculation Examples"
+                detail="2.4 MB"
+                iconType="document"
+                iconColor="blue"
+                onDownload={() => console.log("download doc")}
+              />
+              <FileAttachment
+                label="Simulation Link"
+                detail="2.4 MB"
+                iconType="link"
+                iconColor="purple"
+                onDownload={() => console.log("open link")}
+              />
+            </FileAttachmentGroup>
           </div>
         </div>
         <div className="py-5 flex flex-col px-5 col-span-2 border-zinc-200 rounded-3xl bg-zinc-100 dark:border-neutral-500-30 dark:bg-neutral-500-5 border gap-6">
