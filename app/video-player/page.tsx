@@ -3,7 +3,8 @@ import { FileAttachment, FileAttachmentGroup } from "@/components/file-attachmen
 import { Badge } from "@/components/ui/badge";
 import { CommentInput } from "@/components/comment-input";
 import { CourseModule } from "@/components/course-module";
-import { FileText } from "lucide-react";
+import { KeyTakeaways } from "@/components/key-takeaways";
+import { FileText, Lightbulb } from "lucide-react";
 
 export default function Page() {
   const currentStatus = 'playing';
@@ -26,18 +27,19 @@ export default function Page() {
           </div>
           <p>Understanding the basics of forces and Newton's laws</p>
           <p>In this lesson, we'll explore the fundamental concepts of motion and forces. You'll learn how Newton's laws apply to everyday situations and understand the relationship between force, mass, and acceleration.</p>
-          <div>
-            <h3>Key takeaways</h3>
+          <div className="flex flex-col gap-2">
+            <h3 className="text-lg font-semibold text-black dark:text-neutral-50 flex items-center gap-2">
+              <Lightbulb size="1em" strokeWidth={1.8} className="text-amber-500 dark:text-amber-500" />
+              Course Materials
+            </h3>
             <div>
-              <div>
-                <p>Newton's First Law: An object at rest stays at rest, and an object in motion stays in motion, unless acted upon by an external force.</p>
-              </div>
-              <div>
-                <p>Newton's Second Law: The acceleration of an object is directly proportional to the net force acting upon it and inversely proportional to its mass.</p>
-              </div>
-              <div>
-                <p>Newton's Third Law: For every action, there is an equal and opposite reaction.</p>
-              </div>
+              <KeyTakeaways
+                items={[
+                  "Newton's First Law: An object at rest stays at rest, and an object in motion stays in motion, unless acted upon by an external force.",
+                  "Newton's Second Law: The acceleration of an object is directly proportional to the net force acting upon it and inversely proportional to its mass.",
+                  "Newton's Third Law: For every action, there is an equal and opposite reaction.",
+                ]}
+              />
             </div>
           </div>
           <div className="flex-col flex gap-6">

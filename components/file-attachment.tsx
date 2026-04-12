@@ -16,7 +16,7 @@ import {
   LucideIcon,
 } from "lucide-react";
 
-// ─── Types ───────────────────────────────────────────────────────────────────
+// ─── Types ───
 
 export type FileAttachmentIconType =
   | "pdf"
@@ -61,7 +61,7 @@ export interface FileAttachmentProps {
   disabled?: boolean;
 }
 
-// ─── Icon map ────────────────────────────────────────────────────────────────
+// ─── Icon map 
 
 const ICON_MAP: Record<FileAttachmentIconType, LucideIcon> = {
   pdf: FileText,
@@ -75,7 +75,7 @@ const ICON_MAP: Record<FileAttachmentIconType, LucideIcon> = {
   generic: File,
 };
 
-// ─── Color map ───────────────────────────────────────────────────────────────
+// ─── Color map 
 
 const ICON_COLOR_CLASSES: Record<FileAttachmentIconColor, string> = {
   red: "text-red-500",
@@ -97,7 +97,7 @@ const ICON_BG_CLASSES: Record<FileAttachmentIconColor, string> = {
   yellow: "bg-yellow-400/10",
 };
 
-// ─── Size map ────────────────────────────────────────────────────────────────
+// ─── Size map 
 
 const SIZE_CONFIG = {
   sm: {
