@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   FlaskConical,
   FileStack,
+  Settings2,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -69,6 +70,11 @@ const data = {
       title: "Analytics",
       url: "#",
       icon: ChartBar,
+    },
+    {
+      title: "Settings",
+      url: "#",
+      icon: Settings2,
     },
   ],
 }
