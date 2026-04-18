@@ -2,16 +2,12 @@
 
 import * as React from "react"
 import {
-  AudioWaveform,
+  Atom,
   ChartBar,
-  Bot,
+  Calculator,
   GraduationCap,
   LayoutDashboard,
-  GalleryVerticalEnd,
-  Map,
-  Command,
-  PieChart,
-  Settings2,
+  FlaskConical,
   FileStack,
 } from "lucide-react"
 
@@ -32,22 +28,10 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
+  subjects: [
+    { name: "Physics", logo: Atom, level: "2 Bac" },
+    { name: "Mathematics", logo: Calculator, level: "1 Bac" },
+    { name: "Chemistry", logo: FlaskConical, level: "2 Bac" },
   ],
   navMain: [
     {
@@ -93,7 +77,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <TeamSwitcher subjects={data.subjects} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />    
