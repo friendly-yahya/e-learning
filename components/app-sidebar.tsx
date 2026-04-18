@@ -3,15 +3,16 @@
 import * as React from "react"
 import {
   AudioWaveform,
-  BookOpen,
+  ChartBar,
   Bot,
-  Command,
-  Frame,
+  GraduationCap,
+  LayoutDashboard,
   GalleryVerticalEnd,
   Map,
+  Command,
   PieChart,
   Settings2,
-  SquareTerminal,
+  FileStack,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -25,7 +26,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data.
 const data = {
   user: {
     name: "shadcn",
@@ -51,89 +51,40 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Overview",
       url: "#",
-      icon: SquareTerminal,
+      icon: LayoutDashboard,
       isActive: true,
+    },
+    {
+      title: "Content Management",
+      url: "#",
+      icon: FileStack,
+    },
+    {
+      title: "Students",
+      url: "#",
+      icon: GraduationCap,
       items: [
         {
-          title: "History",
+          title: "Comments",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Announcements",
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Students List",
           url: "#",
         },
+
       ],
     },
     {
-      title: "Models",
+      title: "Analytics",
       url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      icon: ChartBar,
     },
   ],
 }
