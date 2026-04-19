@@ -1,3 +1,3 @@
-export default function TeacherAnalyticsPage() {
+export default function ContentPage() {
   return <div>Content</div>
 }
