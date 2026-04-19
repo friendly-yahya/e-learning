@@ -35,7 +35,6 @@ export function FileExplorer() {
                 level: "chapters" as Level,
             }
         }
-        //why declare it two times isn't it enough to just declare it globaly?
         const topic = mockSubject.topics.find(t => t.id === current.topicId)
         const chapter = topic?.chapters.find(c => c.id === current.chapterId)
         return {
@@ -127,4 +126,59 @@ export function FileExplorer() {
         }  
         return crumbs      
     }, [current, push, clearSelection])
+    return(
+        <div className="flex flex-col gap-4 p-6" onClick={() => clearSelection}>
+            <Toolbar
+                level={level}
+                viewMode={viewMode}
+                setViewMode={setViewMode}
+                selectedCount={selectedIds.size}
+                canGoBack={canGoBack}
+                canGoForward={canGoForward}
+                onGoBack={goBack}
+                onGoForward={goForward}
+                onDelete={handleDelete}
+            /> 
+            <Breadcrumb>
+              <BreadcrumbList>
+                {breadcrumbItems.map((crumb, i) => (
+                  <BreadcrumbItem key={crumb.label}>
+                    {crumb.isCurrent ? (
+                      <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
+                    ) : (
+                      <>
+                        <BreadcrumbLink
+                          className="cursor-pointer"
+                          onClick={crumb.onClick}
+                        >
+                          {crumb.label}
+                        </BreadcrumbLink>
+                        <BreadcrumbSeparator />
+                      </>
+                    )}
+                  </BreadcrumbItem>
+                ))}
+              </BreadcrumbList>
+            </Breadcrumb>            
+            {viewMode === "list" ? (
+                <ListView
+                  items={items}
+                  level={level}
+                  isSelected={isSelected}
+                  onSelect={handleClick}
+                  onOpen={handleOpen}
+                  onDelete={handleDelete}
+                  onRename={handleRename}
+                />
+              ) : (
+                <GridView
+                  items={items}
+                  level={level}
+                  isSelected={isSelected}
+                  onSelect={handleClick}
+                  onOpen={handleOpen}
+                />
+            )}  
+        </div>
+    )
 }
