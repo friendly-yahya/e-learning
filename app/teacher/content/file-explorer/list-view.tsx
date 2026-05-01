@@ -33,6 +33,7 @@ type ListViewProps = {
   renamingId: string | null
   onRenameConfirm: (id: string, newName: string) => void
   onRenameCancel: () => void
+  onDeleteItem: (id: string) => void
 }
 
 // icon per level — topics look like folders, chapters like books, videos like videos
@@ -60,9 +61,10 @@ export function ListView({
   onOpen,
   onDelete,
   onRename,
-  renamingId,          
-  onRenameConfirm,     
-  onRenameCancel
+  renamingId,
+  onRenameConfirm,
+  onRenameCancel,
+  onDeleteItem,
 }: ListViewProps) {
 
   const Icon = itemIcons[level]
@@ -107,7 +109,7 @@ export function ListView({
                   )}
                   // single click → select
                   onClick={(e) => {
-                    e.stopPropagation() // prevents clearing selection from parent div
+                    e.stopPropagation()
                     onSelect(item.id, e)
                   }}
                   // double click → enter/open
@@ -122,8 +124,6 @@ export function ListView({
                   <td className="p-3">
                     <Checkbox
                       checked={isSelected(item.id)}
-                      // stopPropagation so clicking checkbox
-                      // doesn't also trigger the row onClick
                       onClick={(e) => e.stopPropagation()}
                       onCheckedChange={() => {
                         onSelect(item.id, { ctrlKey: true } as React.MouseEvent)
@@ -157,7 +157,6 @@ export function ListView({
 
                   {/* TYPE BADGE */}
                   <td className="p-3 text-neutral-400 capitalize">
-                    {/* slice removes the last "s" — "topics" → "topic" */}
                     {level.slice(0, -1)}
                   </td>
 
@@ -189,6 +188,8 @@ export function ListView({
                         className="size-8 text-neutral-400 hover:text-white"
                         onClick={(e) => {
                           e.stopPropagation()
+                          // select the item first so onRename can find it in selectedIds
+                          onSelect(item.id, e)
                           onRename()
                         }}
                       >
@@ -200,7 +201,7 @@ export function ListView({
                         className="size-8 text-neutral-400 hover:text-red-400"
                         onClick={(e) => {
                           e.stopPropagation()
-                          onDelete()
+                          onDeleteItem(item.id)
                         }}
                       >
                         <Trash2 className="size-3.5" />
@@ -216,12 +217,17 @@ export function ListView({
                   Open
                   <ContextMenuShortcut>↵</ContextMenuShortcut>
                 </ContextMenuItem>
-                <ContextMenuItem onSelect={onRename}>
+                <ContextMenuItem onSelect={() => {
+                  // select the item first so onRename can find it in selectedIds
+                  onSelect(item.id, {} as React.MouseEvent)
+                  onRename()
+                }}>
                   Rename
                   <ContextMenuShortcut>F2</ContextMenuShortcut>
                 </ContextMenuItem>
                 <ContextMenuSeparator />
-                <ContextMenuItem onSelect={onDelete} className="text-red-400">
+                {/* use onDeleteItem, not onDelete — bypasses selectedIds check */}
+                <ContextMenuItem onSelect={() => onDeleteItem(item.id)} className="text-red-400">
                   Delete
                   <ContextMenuShortcut>⌫</ContextMenuShortcut>
                 </ContextMenuItem>
