@@ -1,5 +1,5 @@
 "use client"
-
+import { RenameInput } from "./rename-input"
 import { FileItem, Level } from "@/lib/types"
 import { Folder, BookOpen, Video } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
@@ -19,6 +19,11 @@ type GridViewProps = {
   isSelected: (id: string) => boolean
   onSelect: (id: string, event: React.MouseEvent) => void
   onOpen: (item: FileItem) => void
+  onDelete: () => void
+  onRename: () => void
+  renamingId: string | null
+  onRenameConfirm: (id: string, newName: string) => void
+  onRenameCancel: () => void
 }
 
 // same icon logic as list-view
@@ -41,6 +46,11 @@ export function GridView({
   isSelected,
   onSelect,
   onOpen,
+  onDelete,
+  onRename,
+  renamingId,
+  onRenameConfirm,
+  onRenameCancel,
 }: GridViewProps) {
 
   const Icon = itemIcons[level]

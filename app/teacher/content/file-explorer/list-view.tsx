@@ -1,5 +1,5 @@
 "use client"
-
+import { RenameInput } from "./rename-input"
 import { FileItem, Level } from "@/lib/types"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
@@ -30,6 +30,9 @@ type ListViewProps = {
   onOpen: (item: FileItem) => void
   onDelete: () => void
   onRename: () => void
+  renamingId: string | null
+  onRenameConfirm: (id: string, newName: string) => void
+  onRenameCancel: () => void
 }
 
 // icon per level — topics look like folders, chapters like books, videos like videos
@@ -57,6 +60,9 @@ export function ListView({
   onOpen,
   onDelete,
   onRename,
+  renamingId,          
+  onRenameConfirm,     
+  onRenameCancel
 }: ListViewProps) {
 
   const Icon = itemIcons[level]
@@ -130,20 +136,23 @@ export function ListView({
                   <td className="p-3">
                     <div className="flex items-center gap-2">
                       <Icon className={cn(
-                        "size-5",
+                        "size-5 shrink-0",
                         level === "topics" && "text-purple-400",
                         level === "chapters" && "text-blue-400",
-                        level === "videos" && "text-neutral-400",
+                        level === "videos" && "text-zinc-400",
                       )} />
-                      <span className="font-medium text-white">
-                        {item.name}
-                      </span>
+
+                      {/* swap between text and input based on renamingId */}
+                      {renamingId === item.id ? (
+                        <RenameInput
+                          initialValue={item.name}
+                          onConfirm={(newName) => onRenameConfirm(item.id, newName)}
+                          onCancel={onRenameCancel}
+                        />
+                      ) : (
+                        <span className="font-medium text-white">{item.name}</span>
+                      )}
                     </div>
-                    {"description" in item && item.description && (
-                      <p className="text-neutral-500 text-xs mt-0.5 ml-7">
-                        {item.description}
-                      </p>
-                    )}
                   </td>
 
                   {/* TYPE BADGE */}

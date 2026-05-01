@@ -1,10 +1,11 @@
 "use client"
+
+import React, { useState, useMemo, useCallback } from "react"
 import { useHistory } from "@/hooks/use-history"
 import { useSelection } from "@/hooks/use-selection"
 import { useKeyboard } from "@/hooks/use-keyboard"
 import { mockSubject } from "@/lib/mock-data"
 import { CurrentPath, FileItem, Level, Topic, Chapter, Video } from "@/lib/types"
-import { useState, useMemo, useCallback } from "react"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,7 +19,7 @@ import { ListView } from "./list-view"
 import { GridView } from "./grid-view"
 
 export function FileExplorer() {
-    //
+
     const { current, push, goBack, goForward, canGoForward, canGoBack } = useHistory({ subjectId: mockSubject.id})
     const [viewMode, setViewMode] = useState<"list" | "grid">("list")
     const { items, level } = useMemo(() => {
@@ -44,7 +45,27 @@ export function FileExplorer() {
     }, [current])
 
     const { selectedIds, handleClick, selectAll, clearSelection, isSelected } = useSelection(items)
+        // add this state
+    const [renamingId, setRenamingId] = useState<string | null>(null)
 
+    // update handleRename
+    const handleRename = useCallback(() => {
+      if (selectedIds.size !== 1) return
+      const id = Array.from(selectedIds)[0]
+      setRenamingId(id)
+    }, [selectedIds])
+
+    // add handleRenameConfirm
+    const handleRenameConfirm = useCallback((id: string, newName: string) => {
+      console.log("rename", id, "to", newName)
+      // will update DB here later
+      setRenamingId(null)
+    }, [])
+
+    // add handleRenameCancel
+    const handleRenameCancel = useCallback(() => {
+      setRenamingId(null)
+    }, [])
     const handleOpen = useCallback((item: FileItem)=>{
         if (level === "topics") {
             push({ subjectId: current.subjectId, topicId: item.id })
@@ -73,11 +94,7 @@ export function FileExplorer() {
     const handleDelete = useCallback(() => {
         console.log("delete", Array.from(selectedIds))
     },[selectedIds])
-    const handleRename = useCallback(() => {
-        if (selectedIds.size !== 1 ) return
-        const id = Array.from(selectedIds)[0]
-        console.log("rename", id)
-    }, [selectedIds])
+
     const handleDuplicate = useCallback(() => {
     console.log("duplicate", Array.from(selectedIds))
     }, [selectedIds])
@@ -127,7 +144,7 @@ export function FileExplorer() {
         return crumbs      
     }, [current, push, clearSelection])
     return(
-        <div className="flex flex-col gap-4 p-6" onClick={() => clearSelection}>
+        <div className="flex flex-col gap-4 p-6" onClick={() => clearSelection()}>
             <Toolbar
                 level={level}
                 viewMode={viewMode}
@@ -141,34 +158,41 @@ export function FileExplorer() {
             /> 
             <Breadcrumb>
               <BreadcrumbList>
-                {breadcrumbItems.map((crumb, i) => (
-                  <BreadcrumbItem key={crumb.label}>
-                    {crumb.isCurrent ? (
-                      <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
-                    ) : (
-                      <>
+                {breadcrumbItems.map((crumb) => (
+                  <React.Fragment key={crumb.label}>
+                    <BreadcrumbItem key={crumb.label}>
+                      {crumb.isCurrent ? (
+                        <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
+                      ) : (
                         <BreadcrumbLink
                           className="cursor-pointer"
                           onClick={crumb.onClick}
                         >
                           {crumb.label}
                         </BreadcrumbLink>
-                        <BreadcrumbSeparator />
-                      </>
+                      )}
+                    </BreadcrumbItem>
+                  
+                    {/* separator only between items, not after the last one */}
+                    {!crumb.isCurrent && (
+                      <BreadcrumbSeparator key={`sep-${crumb.label}`} />
                     )}
-                  </BreadcrumbItem>
+                  </React.Fragment>
                 ))}
               </BreadcrumbList>
             </Breadcrumb>            
             {viewMode === "list" ? (
                 <ListView
-                  items={items}
-                  level={level}
-                  isSelected={isSelected}
-                  onSelect={handleClick}
-                  onOpen={handleOpen}
-                  onDelete={handleDelete}
-                  onRename={handleRename}
+                   items={items}
+                   level={level}
+                   isSelected={isSelected}
+                   onSelect={handleClick}
+                   onOpen={handleOpen}
+                   onDelete={handleDelete}
+                   onRename={handleRename}
+                   renamingId={renamingId}
+                   onRenameConfirm={handleRenameConfirm}
+                   onRenameCancel={handleRenameCancel}
                 />
               ) : (
                 <GridView
@@ -177,6 +201,11 @@ export function FileExplorer() {
                   isSelected={isSelected}
                   onSelect={handleClick}
                   onOpen={handleOpen}
+                  onDelete={handleDelete}
+                  onRename={handleRename}
+                  renamingId={renamingId}
+                  onRenameConfirm={handleRenameConfirm}
+                  onRenameCancel={handleRenameCancel}
                 />
             )}  
         </div>
