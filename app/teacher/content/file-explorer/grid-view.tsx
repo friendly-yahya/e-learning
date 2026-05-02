@@ -24,6 +24,7 @@ type GridViewProps = {
   onRenameConfirm: (id: string, newName: string) => void
   onRenameCancel: () => void
   onDeleteItem: (id: string) => void
+  onReorder: (reorderedItems: FileItem[]) => void
 }
 
 const itemIcons = {

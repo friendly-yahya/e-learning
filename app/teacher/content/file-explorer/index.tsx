@@ -171,7 +171,25 @@ export function FileExplorer() {
     const handleDuplicate = useCallback(() => {
         console.log("duplicate", Array.from(selectedIds))
     }, [selectedIds])
+    const handleReorder = useCallback((reorderedItems: FileItem[]) => {
+      setSubjects(prev => {
+        const next = structuredClone(prev)
 
+        if (level === "topics") {
+          // replace topics with reordered array
+          next.topics = reorderedItems as typeof next.topics
+        } else if (level === "chapters" && current.topicId) {
+          const topic = next.topics.find(t => t.id === current.topicId)
+          if (topic) topic.chapters = reorderedItems as typeof topic.chapters
+        } else if (level === "videos" && current.chapterId) {
+          const topic = next.topics.find(t => t.id === current.topicId)
+          const chapter = topic?.chapters.find(c => c.id === current.chapterId)
+          if (chapter) chapter.videos = reorderedItems as typeof chapter.videos
+        }
+
+        return next
+      })
+    }, [level, current])
     // ============================================================
     // KEYBOARD — wires all shortcuts to the functions above
     // ============================================================
@@ -323,6 +341,7 @@ export function FileExplorer() {
                     onRenameConfirm={handleRenameConfirm}
                     onRenameCancel={handleRenameCancel}
                     onDeleteItem={handleDeleteItem}
+                    onReorder={handleReorder}
                 />
             ) : (
                 <GridView
@@ -337,6 +356,7 @@ export function FileExplorer() {
                     onRenameConfirm={handleRenameConfirm}
                     onRenameCancel={handleRenameCancel}
                     onDeleteItem={handleDeleteItem}
+                    onReorder={handleReorder}
                 />
             )}
 
