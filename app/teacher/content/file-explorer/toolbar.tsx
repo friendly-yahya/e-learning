@@ -24,6 +24,7 @@ type ToolbarProps = {
   onGoBack: () => void
   onGoForward: () => void
   onDelete: () => void
+  onNew: () => void
 }
 
 const newButtonConfig = {
@@ -42,6 +43,7 @@ export function Toolbar({
   onGoBack,
   onGoForward,
   onDelete,
+  onNew,
 }: ToolbarProps) {
 
   // grab the right label and icon for current level
@@ -73,7 +75,10 @@ export function Toolbar({
         </Button>
 
         {/* NEW BUTTON — label and icon change per level */}
-        <Button className="bg-purple-400 hover:bg-purple-500 text-white gap-2">
+        <Button 
+          className="bg-purple-400 hover:bg-purple-500 text-white gap-2"
+          onClick={onNew}
+        >
           <Icon className="size-4" />
           {label}
         </Button>

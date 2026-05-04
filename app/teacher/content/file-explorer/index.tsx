@@ -1,5 +1,6 @@
 "use client"
 
+import { CreateDialog, CreateData } from "./create-dialog"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -40,6 +41,8 @@ export function FileExplorer() {
     // ============================================================
     const [viewMode, setViewMode] = useState<"list" | "grid">("list")
 
+    // state
+    const [showCreateDialog, setShowCreateDialog] = useState(false)
     // ============================================================
     // SUBJECTS — local state wrapping mock data
     // will be replaced by Supabase later
@@ -190,6 +193,54 @@ export function FileExplorer() {
         return next
       })
     }, [level, current])
+
+    const handleCreate = useCallback((data: CreateData) => {
+      setSubjects(prev => {
+        const next = structuredClone(prev)
+
+        if (level === "topics") {
+          next.topics.push({
+            id: crypto.randomUUID(),
+            name: data.name,
+            description: data.description,
+            status: "draft",
+            subjectId: next.id,
+            chapters: [],
+            order: next.topics.length,
+          })
+        } else if (level === "chapters" && current.topicId) {
+          const topic = next.topics.find(t => t.id === current.topicId)
+          if (topic) {
+            topic.chapters.push({
+              id: crypto.randomUUID(),
+              name: data.name,
+              description: data.description,
+              status: "draft",
+              topicId: topic.id,
+              videos: [],
+              order: topic.chapters.length,
+            })
+          }
+        } else if (level === "videos" && current.topicId && current.chapterId) {
+          const topic = next.topics.find(t => t.id === current.topicId)
+          const chapter = topic?.chapters.find(c => c.id === current.chapterId)
+          if (chapter) {
+            chapter.videos.push({
+              id: crypto.randomUUID(),
+              name: data.name,
+              status: "draft",
+              url: data.url ?? "",
+              duration: 0,
+              chapterId: chapter.id,
+              order: chapter.videos.length,
+            })
+          }
+        }
+
+        return next
+      })
+      setShowCreateDialog(false)
+    }, [level, current])
     // ============================================================
     // KEYBOARD — wires all shortcuts to the functions above
     // ============================================================
@@ -274,6 +325,7 @@ export function FileExplorer() {
                 onGoBack={goBack}
                 onGoForward={goForward}
                 onDelete={handleDelete}
+                onNew={() => setShowCreateDialog(true)}
             />
 
             {/* BREADCRUMB */}
@@ -326,6 +378,13 @@ export function FileExplorer() {
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
+            
+            <CreateDialog
+              open={showCreateDialog}
+              level={level}
+              onClose={() => setShowCreateDialog(false)}
+              onCreate={handleCreate}
+            />
 
             {/* CONTENT — list or grid based on viewMode */}
             {viewMode === "list" ? (
